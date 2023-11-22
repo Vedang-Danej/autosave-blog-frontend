@@ -31,7 +31,7 @@ const store = configureStore({
   preloadedState: {},
 });
 
-const baseURL = 'https://autosave-blog-api.fly.dev';
+const baseURL = 'https://autosave-blog-api.fly.dev/api/blog';
 axios.interceptors.request.use(
   (config) => {
     config.url = baseURL + config.url;
