@@ -8,7 +8,7 @@ export const getAllBlogs = () => async (dispatch) => {
     dispatch({
       type: actionTypes.GET_ALL_BLOGS_REQUEST,
     });
-    const { data } = await axios.get('http://localhost:8080/api/blog');
+    const { data } = await axios.get('/');
     dispatch({
       type: actionTypes.GET_ALL_BLOGS_SUCCESS,
       payload: data,
@@ -29,7 +29,7 @@ export const getOneBlog = (id) => async (dispatch) => {
     dispatch({
       type: actionTypes.GET_ONE_BLOG_REQUEST,
     });
-    const { data } = await axios.get(`http://localhost:8080/api/blog/${id}`);
+    const { data } = await axios.get(`/${id}`);
     dispatch({
       type: actionTypes.GET_ONE_BLOG_SUCCESS,
       payload: data,
@@ -60,7 +60,7 @@ export const newBlog = (title, author, blogContent) => async (dispatch) => {
       author,
       title,
     };
-    const { data } = await axios.post(`http://localhost:8080/api/blog`, blog, config);
+    const { data } = await axios.post(`/`, blog, config);
     dispatch({
       type: actionTypes.NEW_BLOG_SUCCESS,
       payload: data,
@@ -96,7 +96,7 @@ export const updateBlog = (id, updatedTitle, updatedAuthor, updatedContent) => a
       updatedAuthor,
       updatedContent,
     };
-    const { data } = await axios.put(`http://localhost:8080/api/blog/${id}`, blog, config);
+    const { data } = await axios.put(`/${id}`, blog, config);
     dispatch({
       type: actionTypes.UPDATE_BLOG_SUCCESS,
       payload: data,
@@ -127,7 +127,7 @@ export const updateBlog = (id, updatedTitle, updatedAuthor, updatedContent) => a
 
 export const deleteBlog = (id) => async (dispatch) => {
   try {
-    await axios.delete(`http://localhost:8080/api/blog/${id}`);
+    await axios.delete(`/${id}`);
     dispatch({
       type: actionTypes.DELETE_BLOG_SUCCESS,
       payload: id,
